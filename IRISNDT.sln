@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRISNDT.API.RoverControl", "IRISNDT.API.RoverControl\IRISNDT.API.RoverControl.csproj", "{2E8E29EF-5F88-4F2C-B8F0-DF0D98AF2E51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRISNDT.Models", "IRISNDT.Models\IRISNDT.Models.csproj", "{802001C0-78C5-4CF4-8FDA-684C2E79ECD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRISNDT.Common.Models", "IRISNDT.Common.Models\IRISNDT.Common.Models.csproj", "{97CE7316-4E0F-4325-86B0-2F5ACA829C75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRISNDT.RoverControl.CommandProcessor", "IRISNDT.RoverControl.CommandProcessor\IRISNDT.RoverControl.CommandProcessor.csproj", "{DE4E706C-47C3-40B0-A064-8536F538D9C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IRISNDT.Client", "IRISNDT.Client\IRISNDT.Client.csproj", "{117E6455-5008-4D9A-9C99-502751B0DE20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E8E29EF-5F88-4F2C-B8F0-DF0D98AF2E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8E29EF-5F88-4F2C-B8F0-DF0D98AF2E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8E29EF-5F88-4F2C-B8F0-DF0D98AF2E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8E29EF-5F88-4F2C-B8F0-DF0D98AF2E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802001C0-78C5-4CF4-8FDA-684C2E79ECD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802001C0-78C5-4CF4-8FDA-684C2E79ECD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802001C0-78C5-4CF4-8FDA-684C2E79ECD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802001C0-78C5-4CF4-8FDA-684C2E79ECD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CE7316-4E0F-4325-86B0-2F5ACA829C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CE7316-4E0F-4325-86B0-2F5ACA829C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CE7316-4E0F-4325-86B0-2F5ACA829C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CE7316-4E0F-4325-86B0-2F5ACA829C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4E706C-47C3-40B0-A064-8536F538D9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4E706C-47C3-40B0-A064-8536F538D9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4E706C-47C3-40B0-A064-8536F538D9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4E706C-47C3-40B0-A064-8536F538D9C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117E6455-5008-4D9A-9C99-502751B0DE20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117E6455-5008-4D9A-9C99-502751B0DE20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117E6455-5008-4D9A-9C99-502751B0DE20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117E6455-5008-4D9A-9C99-502751B0DE20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67C6AFDD-CF31-4C40-9584-B627FF64EC86}
+	EndGlobalSection
+EndGlobal

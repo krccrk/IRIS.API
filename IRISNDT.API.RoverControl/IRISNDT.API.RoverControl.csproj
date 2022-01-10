@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>44df4434-42f1-4dd9-b838-55191c684281</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IRISNDT.Common.Models\IRISNDT.Common.Models.csproj" />
+    <ProjectReference Include="..\IRISNDT.Models\IRISNDT.Models.csproj" />
+    <ProjectReference Include="..\IRISNDT.RoverControl.CommandProcessor\IRISNDT.RoverControl.CommandProcessor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Audit\" />
+  </ItemGroup>
+
+
+</Project>

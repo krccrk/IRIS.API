@@ -1,0 +1,107 @@
+﻿@model List<IRISNDT.Common.Models.CommandHistory>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<table cellpadding="0" cellspacing="0" class="table table-bordered table-condensed">
+    <tr>
+        <th>Command Id</th>
+        <th>Executed Date</th>
+        <th>No of Rovers </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="" onclick="OpenDetails(event)" class="btn" data-toggle="modal" data-target="#myModal">@item.sessionId</a>
+
+            </td>
+            <td>@item.initiatedDtm</td>
+            <td>@item.noOfRoversCommand</td>
+        </tr>
+
+    }
+
+</table>
+<div id="myModal" class="modal fade"  role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+               
+            </div>
+            <div class="modal-body">
+                <canvas id="roverplateau"></canvas>
+                <div class="auditlog" id="auditLogConatiner"><br /></div>
+                <div class="errorcontainer" id="errorDiv"></div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    
+    
+
+    function ExtractAudit(rover) {
+        var audit = '';
+        rover.audit.map((str) => {
+            audit += (str + '\n');
+            console.log(str);
+        })
+        audit += "---------------------------------------------------------------------------\n"
+        return audit;
+        
+    }
+
+    function OpenDetails(e) {
+        
+        $.ajax({
+            url: '/CommandCentre/GetSessionDetails',
+
+            data: { sessionId : e.target.innerHTML },
+            type: "GET",
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (response) {
+                console.log(response);
+                var json = JSON.parse(response);
+                json = json.value;
+                var mycanvas = document.getElementById('roverplateau');
+                mycanvas.style.display = "block";
+                mycanvas.width = 500; //(json.plateau.gridXColumn + 1) * 100;
+                mycanvas.height = 500; //(json.plateau.gridYColum + 1) * 100;
+                DrawGridLines(mycanvas, (json.plateau.gridXColumn + 1), (json.plateau.gridYColum + 1))
+                DrawConnectors(json, 500 / (json.plateau.gridXColumn + 1), 500 / (json.plateau.gridYColum + 1))
+                var consolauditStr = '';
+                var audit = json.rovers.map((rover) => ExtractAudit(rover));
+                var consolAudit = audit.forEach((str) => { consolauditStr += str });
+                var auditDiv = document.getElementById('auditLogConatiner');
+                auditDiv.innerText = consolauditStr;
+                console.log('gggg', consolauditStr);
+               
+
+            },
+            error: function (xhr, obj, err) {
+
+                errorDiv.style.display = "block";
+                var errors = '';
+                console.log(JSON.parse(xhr.responseText));
+                JSON.parse(xhr.responseText).map((error) => {
+                    errors += (error + '\n')
+                })
+                errorDivObj.innerText = errors;
+                alert(xhr.responseText)
+            }
+        });
+        $("#myModal").modal('show');
+        
+        return false;
+
+    }
+</script>

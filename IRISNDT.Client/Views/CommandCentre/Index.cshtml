@@ -1,0 +1,88 @@
+﻿@model CommandModel
+@{
+    ViewData["Title"] = "Command Centre";
+}
+
+<form id="frm" asp-controller="CommandCentre" name="searchForm" asp-action="ExecuteCommand" method="post" class="form-left" role="form">
+    @{
+
+    }
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+       
+        <div class="col-md-5">
+            <label asp-for="RoverInstructions" class="col-md-2 control-label"></label>
+            @*<input asp-for="RoverInstructions" class="form-control" />*@
+            @Html.TextAreaFor(m => m.RoverInstructions, new { @id = "instructions", @class = "form-control", style = "height:350px;Width=250px" })
+            
+            <input type="button" class="btn btn-default" style="padding-top:10px" onclick="ExecuteCommand()" value="Execute Command" />
+
+        </div>
+
+        <div id="dvPartialView" class="col-md-5">
+            <canvas id="roverplateau"></canvas>
+            
+                <div class="errorcontainer" id="errorDiv"></div>
+            
+            
+        </div>
+    </div>
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+           
+        </div>*@
+    @*</div>*@
+    @*<div id="dvPartialView">
+        <canvas id="roverplateau"></canvas>
+    </div>
+    <div id="container">
+    </div>*@
+
+    <script>
+        function ExecuteCommand() {
+            var mycanvas = document.getElementById('roverplateau');
+            var errorDivObj = document.getElementById('errorDiv');
+            console.log(mycanvas, errorDivObj )
+            mycanvas.style.display = "none";
+            errorDiv.style.display = "none";
+            var comments = $('#frm').serialize();
+            console.log(comments)
+            $.ajax({
+                url: 'CommandCentre/ExecuteCommand',
+                data: comments,
+
+                type: "POST",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (response) {
+                   
+                    var json = JSON.parse(response);
+                    json = json.value;
+                    var mycanvas = document.getElementById('roverplateau');
+                    mycanvas.style.display = "block";
+                    mycanvas.width = 500; //(json.plateau.gridXColumn + 1) * 100;
+                    mycanvas.height = 500; //(json.plateau.gridYColum + 1) * 100;
+                    DrawGridLines(mycanvas, (json.plateau.gridXColumn + 1), (json.plateau.gridYColum + 1))
+
+                    DrawConnectors(json, 500 / (json.plateau.gridXColumn + 1), 500 / (json.plateau.gridYColum + 1))
+                },
+                error: function (xhr, obj, err) {
+                   
+                    errorDiv.style.display = "block";
+                    var errors = '';
+                    console.log(JSON.parse(xhr.responseText));
+                    JSON.parse(xhr.responseText).map((error) => {
+                        errors += (error + '\n')
+                    })
+                    errorDivObj.innerText = errors;
+                    alert(xhr.responseText)
+                }
+            });
+        }
+
+
+        
+
+    </script>
+
+</form>
